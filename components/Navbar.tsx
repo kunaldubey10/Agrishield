@@ -27,6 +27,7 @@ const Navbar = () => {
 
   const navItems: NavItem[] = [
     { name: 'Home', path: '/' },
+    { name: 'Crop Information', path: '/crop-information' },
     { name: 'Disease Detection', path: '/disease-detection' },
     { name: 'NDVI Analysis', path: '/ndvi-analysis' },
     { name: 'Market Prices', path: '/market-prices' },
