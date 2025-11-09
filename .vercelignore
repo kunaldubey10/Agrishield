@@ -11,3 +11,21 @@ __pycache__
 *.keras
 *.h5
 .DS_Store
+
+# Firebase functions (not for Vercel deployment)
+agrishieldfunc
+functions
+dataconnect
+
+# Python files
+*.py
+requirements.txt
+train.py
+test.py
+main.py
+run.py
+convert_model.py
+
+# Deployment docs
+*.md
+!README.md
