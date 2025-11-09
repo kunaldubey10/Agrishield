@@ -1,0 +1,61 @@
+{
+  "name": "agrishield",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "backend": "cd backend && ..\\venv\\Scripts\\python.exe app.py || cd backend && python app.py",
+    "backend:venv": "cd backend && if exist ..\\venv\\Scripts\\python.exe (..\\venv\\Scripts\\python.exe app.py) else if exist venv\\Scripts\\python.exe (venv\\Scripts\\python.exe app.py) else (python app.py)",
+    "dev:all": "concurrently \"npm run dev\" \"npm run backend:venv\"",
+    "dev:all:win": "start cmd /k \"npm run dev\" && timeout /t 2 && start cmd /k \"npm run backend:venv\""
+  },
+  "dependencies": {
+    "@dataconnect/generated": "file:src/dataconnect-generated",
+    "@radix-ui/react-select": "^2.2.2",
+    "@tensorflow-models/mobilenet": "^2.0.4",
+    "@tensorflow/tfjs": "^3.21.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.22.0",
+    "@tensorflow/tfjs-converter": "^4.22.0",
+    "@types/leaflet": "^1.9.17",
+    "@types/leaflet-draw": "^1.0.11",
+    "autoprefixer": "^10.4.17",
+    "axios": "^1.6.7",
+    "chart.js": "^4.4.9",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "firebase": "^12.5.0",
+    "framer-motion": "^12.7.3",
+    "i18next": "^23.8.2",
+    "leaflet": "^1.9.4",
+    "leaflet-draw": "^1.0.4",
+    "lucide-react": "^0.501.0",
+    "next": "14.1.0",
+    "postcss": "^8.4.35",
+    "react": "18.2.0",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "18.2.0",
+    "react-i18next": "^14.0.5",
+    "react-icons": "^5.0.1",
+    "react-leaflet": "^4.2.1",
+    "tailwind-merge": "^3.2.0",
+    "tailwindcss": "^3.4.1",
+    "undici": "5.26.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
+    "concurrently": "^7.6.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.1.0",
+    "null-loader": "^4.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

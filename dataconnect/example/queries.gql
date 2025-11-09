@@ -1,0 +1,31 @@
+mutation CreateUser($displayName: String!, $email: String!) @auth(level: USER) {
+  user_insert(data: {displayName: $displayName, email: $email, id_expr: "uuidV4()", createdAt_expr: "request.time"})
+}
+
+query GetField($id: UUID!) @auth(level: USER) {
+  field(id: $id) {
+    id
+    name
+    location
+    sizeAcres
+    soilType
+    createdAt
+    lastPlantedDate
+  }
+}
+
+query ListFields @auth(level: USER) {
+  fields {
+    id
+    name
+    location
+    sizeAcres
+    soilType
+    createdAt
+    lastPlantedDate
+  }
+}
+
+mutation CreateDetection($fieldId: UUID!, $cropId: UUID!, $confidenceScore: Float!, $detectedDisease: String!, $imageUrl: String!) @auth(level: USER) {
+  detection_insert(data: {fieldId: $fieldId, cropId: $cropId, confidenceScore: $confidenceScore, detectedDisease: $detectedDisease, detectionDate_expr: "request.time", imageUrl: $imageUrl})
+}

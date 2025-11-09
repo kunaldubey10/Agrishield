@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: agrishield-backend
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FLASK_APP
+        value: app.py
+      - key: FLASK_ENV
+        value: production
+      - key: AGMARKNET_API_KEY
+        sync: false
+      - key: MODEL_DOWNLOAD_URL
+        value: https://drive.google.com/uc?export=download&id=1bRTb1AKSvKEmifyYvXPXyKbFz73OithC
+      - key: PORT
+        value: 10000
+    healthCheckPath: /health

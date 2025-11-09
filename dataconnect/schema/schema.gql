@@ -1,0 +1,55 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  phoneNumber: String
+  address: String
+  farmName: String
+}
+
+type Field @table {
+  name: String!
+  location: String! # Assuming string for latitude/longitude for simplicity
+  sizeAcres: Float!
+  createdAt: Timestamp!
+  soilType: String
+  lastPlantedDate: Date
+  user: User
+}
+
+type Crop @table {
+  name: String!
+  plantingDate: Date!
+  expectedHarvestDate: Date!
+  createdAt: Timestamp!
+  variety: String
+  growthStage: String
+  field: Field
+}
+
+type Detection @table {
+  detectionDate: Timestamp!
+  imageUrl: String!
+  detectedDisease: String!
+  confidenceScore: Float!
+  recommendation: String
+  crop: Crop
+  field: Field
+}
+
+type Recommendation @table {
+  recommendationDate: Timestamp!
+  category: String!
+  details: String!
+  status: String
+  field: Field
+  crop: Crop
+}
+
+type SatelliteData @table {
+  captureDate: Date!
+  ndviValue: Float!
+  imageUrl: String!
+  cloudCoverPercentage: Float
+  field: Field
+}

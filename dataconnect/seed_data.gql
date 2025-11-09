@@ -1,0 +1,108 @@
+mutation CreateDemoData @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      email: "demouser1@example.com",
+      createdAt: "2024-04-25T12:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      email: "demouser2@example.com",
+      createdAt: "2024-04-25T12:00:00Z"
+    }
+  ])
+  field_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      name: "Field 1",
+      location: "Location 1",
+      sizeAcres: 10.0,
+      createdAt: "2024-04-25T12:00:00Z"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      name: "Field 2",
+      location: "Location 2",
+      sizeAcres: 12.5,
+      createdAt: "2024-04-25T12:00:00Z"
+    }
+  ])
+  crop_insertMany(data: [
+    {
+      id: "750e8400-e29b-41d4-a716-446655440000",
+      fieldId: "650e8400-e29b-41d4-a716-446655440000",
+      name: "Crop 1",
+      variety: "Variety 1",
+      plantingDate: "2024-04-01",
+      expectedHarvestDate: "2024-09-01",
+      createdAt: "2024-04-25T12:00:00Z"
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440001",
+      fieldId: "650e8400-e29b-41d4-a716-446655440001",
+      name: "Crop 2",
+      variety: "Variety 2",
+      plantingDate: "2024-04-01",
+      expectedHarvestDate: "2024-10-01",
+      createdAt: "2024-04-25T12:00:00Z"
+    }
+  ])
+  satelliteData_insertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440000",
+      fieldId: "650e8400-e29b-41d4-a716-446655440000",
+      imageUrl: "https://example.com/satellite1.jpg",
+      captureDate: "2024-04-15",
+      ndviValue: 0.75
+    },
+    {
+      id: "850e8400-e29b-41d4-a716-446655440001",
+      fieldId: "650e8400-e29b-41d4-a716-446655440001",
+      imageUrl: "https://example.com/satellite2.jpg",
+      captureDate: "2024-04-16",
+      ndviValue: 0.80
+    }
+  ])
+  detection_insertMany(data: [
+    {
+      id: "950e8400-e29b-41d4-a716-446655440000",
+      fieldId: "650e8400-e29b-41d4-a716-446655440000",
+      cropId: "750e8400-e29b-41d4-a716-446655440000",
+      imageUrl: "https://example.com/detection1.jpg",
+      detectionDate: "2024-04-20T12:00:00Z",
+      detectedDisease: "Disease 1",
+      confidenceScore: 0.90
+    },
+    {
+      id: "950e8400-e29b-41d4-a716-446655440001",
+       fieldId: "650e8400-e29b-41d4-a716-446655440001",
+      cropId: "750e8400-e29b-41d4-a716-446655440001",
+      imageUrl: "https://example.com/detection2.jpg",
+      detectionDate: "2024-04-21T12:00:00Z",
+      detectedDisease: "Disease 2",
+      confidenceScore: 0.85
+    }
+  ])
+   recommendation_insertMany(data: [
+    {
+      id: "a50e8400-e29b-41d4-a716-446655440000",
+      fieldId: "650e8400-e29b-41d4-a716-446655440000",
+      cropId: "750e8400-e29b-41d4-a716-446655440000",
+      recommendationDate: "2024-04-26T12:00:00Z",
+      category: "Pesticide",
+      details: "Apply pesticide X"
+    },
+    {
+       id: "a50e8400-e29b-41d4-a716-446655440001",
+       fieldId: "650e8400-e29b-41d4-a716-446655440001",
+      cropId: "750e8400-e29b-41d4-a716-446655440001",
+      recommendationDate: "2024-04-27T12:00:00Z",
+      category: "Fertilizer",
+      details: "Apply fertilizer Y"
+    }
+  ])
+}

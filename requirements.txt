@@ -1,0 +1,21 @@
+streamlit==1.25.0
+numpy==1.24.0
+matplotlib==3.7.1
+Pillow==9.5.0
+opencv-python==4.7.0
+pandas==1.5.3
+scikit-learn==1.2.2
+seaborn==0.12.2
+tensorflow>=2.14.0
+# Remove the existing virtual environment
+rm -rf cloud/lib/venv
+
+# Create a new virtual environment
+python3 -m venv cloud/lib/venv
+
+# Activate the virtual environment
+source cloud/lib/venv/bin/activate
+
+# Install the requirements
+pip install -r requirements.txt
+
