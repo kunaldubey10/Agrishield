@@ -1,10 +1,22 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { FaMapMarkerAlt, FaCalendarAlt, FaSearch, FaInfoCircle, FaMousePointer, FaDrawPolygon, FaCheckCircle } from 'react-icons/fa'
-import NDVIMap from '@/components/NDVIMap'
 import { format, subDays } from 'date-fns'
+
+const NDVIMap = dynamic(() => import('@/components/NDVIMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-[600px] bg-gray-100 rounded-lg">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto mb-4"></div>
+        <p className="text-gray-600">Loading map...</p>
+      </div>
+    </div>
+  ),
+});
 
 export default function NDVIAnalysis() {
   const [selectedArea, setSelectedArea] = useState<[number, number][] | null>(null)

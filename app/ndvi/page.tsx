@@ -1,9 +1,21 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { FaLeaf, FaChartLine, FaInfoCircle } from 'react-icons/fa';
-import NDVIMap from '@/components/NDVIMap';
+
+const NDVIMap = dynamic(() => import('@/components/NDVIMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-[600px] bg-gray-100 rounded-lg">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto mb-4"></div>
+        <p className="text-gray-600">Loading map...</p>
+      </div>
+    </div>
+  ),
+});
 
 export default function NDVIPage() {
   const [selectedArea, setSelectedArea] = useState<[number, number][]>([]);
